@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: php
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: php
+    spec:
+      containers:
+        - image: gcr.io/${PROJECT_ID}/${IMAGE_PHP_APACHE}
+          name: apache
+          ports:
+            - containerPort: 80
+              name: php
+        - image: gcr.io/${PROJECT_ID}/${IMAGE_MYSQL}
+          name: db
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: pass
+          ports:
+            - containerPort: 3306
+              name: php
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-yml
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: php
