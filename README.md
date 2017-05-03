@@ -73,3 +73,16 @@ $ envsubst < deploy.yml | kubectl create -f -
 ```
 $ envsubst < deploy_with_proxy.yml | kubectl create -f -
 ```
+
+# Update
+
+```
+# Update image
+$ docker build -t <IMAGE-NAME> .
+$ gcloud docker -- push <IMAGE-NAME>
+$ kubectl set image <CONTAINER-NAME>=<IMAGE-NAME>:latest
+
+# Update deployment
+$ kubectl edit deployment <DEPLOYMENT-NAMEM>
+# Edit ....
+```

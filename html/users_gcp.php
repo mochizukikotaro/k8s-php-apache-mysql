@@ -1,6 +1,7 @@
-<h1>Test</h1>
+<h1>Connect to Google Cloud SQL</h1>
 
-
+<dt>Update image</dt>
+<dd><pre>kubectl set image deploy/php &lt;CONTAINER-NAME&gt;=&lt;IMAGE-NAME&gt;</pre></dd>
 
 <?
 // PDO
