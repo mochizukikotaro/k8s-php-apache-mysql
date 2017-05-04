@@ -40,6 +40,7 @@ Then, you can access `http://localhost/users_for_local.php`.
 - Cloud SQL
   - root:pass
   - create credentials
+- Secrete
 
 
 **Environment variables**
